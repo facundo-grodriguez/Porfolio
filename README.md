@@ -7,15 +7,17 @@ Web personal de una sola página con 3 proyectos propios. Backend / Full Stack D
 
 ## Stack
 
-HTML + CSS estáticos, publicados con GitHub Pages. Sin frameworks.
+HTML + CSS + un poco de JavaScript, sin frameworks, publicados con GitHub Pages: https://facundo-grodriguez.github.io/portfolio/
 
 ## Estructura
 
 - `index.html`: la página
 - `css/`: estilos
+- `js/`: solapas, visor de imágenes y botón de volver arriba
+- `cv/`: CV en PDF
 - `img/`: capturas de cada proyecto (solo datos de ejemplo)
 - `PLAN.md`: plan de trabajo y reglas del proyecto
 
 ## Estado
 
-En construcción. Ver `PLAN.md`.
+Publicado. El plan de trabajo y las decisiones están en `PLAN.md`.

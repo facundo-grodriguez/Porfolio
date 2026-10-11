@@ -1,5 +1,7 @@
 # Plan: Portfolio web de Facundo Rodriguez
 
+> **Estado (11/10/2026):** pasos 1 a 6 hechos. La web está publicada en https://facundo-grodriguez.github.io/portfolio/. Falta el paso 7 (LinkedIn), que hace Facundo. Las decisiones de la sección 2 se actualizaron donde cambiaron durante el trabajo.
+
 > Instrucción para Claude: este archivo es el plan base. Trabajá **un paso por vez**, en el orden de la sección 7. Al terminar cada paso, mostrá el resultado, decí qué quedó listo y esperá mi OK antes de seguir. No inventes datos: lo marcado como [FALTA] se pregunta, no se completa.
 
 ## 1. Objetivo
@@ -11,10 +13,13 @@ Perfil: Backend / Full Stack Developer (JS, Node.js, SQL Server) con foco en IA 
 ## 2. Decisiones ya tomadas
 
 - Web estática, una sola página, en español.
-- Publicación con GitHub Pages desde el repo `portfolio`.
-- Tecnología: HTML + CSS (JS solo si hace falta algo mínimo). Sin frameworks salvo que se justifique.
-- Estilo alineado al banner de LinkedIn: fondo oscuro casi negro, texto blanco, un solo color de acento (rojo/naranja del código de la foto del banner). Nombre en tipografía manuscrita (como el banner), resto en sans-serif sobria. Sin relleno.
-- Contacto público: solo mail, LinkedIn y GitHub. Sin teléfono.
+- Publicación con GitHub Pages desde el repo `portfolio` (rama `main`, raíz). URL: https://facundo-grodriguez.github.io/portfolio/
+- Tecnología: HTML + CSS + un `js/main.js` mínimo (solapas de proyectos, visor de imágenes, botón de volver arriba). Sin frameworks ni dependencias.
+- Estilo (cambió respecto del plan original): fondo casi negro azulado, texto claro y escala pastel en vez del naranja del banner, porque el naranja sobre oscuro se parecía demasiado a la interfaz de Claude. Lavanda como color base; por estado de proyecto: menta (en producción), durazno (en piloto), lavanda (en pruebas). Nombre en Caveat (manuscrita), texto en Space Grotesk, etiquetas y código en JetBrains Mono. Esquinas casi rectas. Sin adornos de natación (se probaron olas, carril, luz de agua y boya y se descartaron).
+- Contacto público: mail, LinkedIn, GitHub y CV descargable. Sin teléfono.
+- Proyectos en solapas (Alquileres, Recibos, WhatsApp) con panel de alto fijo; cada tarjeta tiene un estilo propio (terminal, plano, laboratorio). Las capturas se abren en un visor con fondo borroso y zoom.
+- Orden de la página: Presentación, Proyectos, Experiencia, Stack y formación, Contacto.
+- La foto es la del perfil de GitHub (`img/foto.png`).
 - Tono: directo, honesto sobre el estado de cada proyecto, sin frases genéricas de IA ("apasionado", "soluciones innovadoras", etc.).
 
 ## 3. Estructura del repo
@@ -24,7 +29,12 @@ portfolio/
 ├── index.html
 ├── css/
 │   └── styles.css
+├── js/
+│   └── main.js
+├── cv/
+│   └── Facundo_Rodriguez_CV.pdf
 ├── img/
+│   ├── foto.png
 │   ├── whatsapp-bot/      (capturas con datos de ejemplo)
 │   ├── recibos/
 │   └── alquileres/
@@ -53,8 +63,8 @@ Cada caso de estudio: título, una línea de contexto, problema, solución, stac
 - **Dashboard**: conversaciones pendientes (priorizadas arriba), métricas generales de uso y vista de chat.
 - **Estado**: proyecto personal en pruebas, sin cliente real todavía. Hoy responde con las FAQs cargadas; la arquitectura está preparada para sumar una IA como fallback (restringida a esas FAQs).
 - **Regla**: las métricas del dashboard son de pruebas. No presentarlas como resultados reales. Si se muestran, rotularlas "datos de prueba".
-- [FALTA] Link al repo: github.com/facundo-grodriguez/whatsapp-bot (confirmar que sea público y esté limpio).
-- [FALTA] Capturas del dashboard y del chat sin datos reales.
+- Repo: github.com/facundo-grodriguez/whatsapp-bot (público, historial auditado; queda visible un número de teléfono del propio Facundo en commits viejos, decisión suya de dejarlo).
+- Capturas: solo el dashboard con datos de prueba. Se descartó la maqueta del chat porque no era una captura real.
 
 ### 5.2 Recibos de sueldo (Anexo III)
 - **Problema**: un cambio normativo exige un nuevo formato de recibo (Anexo III).
@@ -63,7 +73,7 @@ Cada caso de estudio: título, una línea de contexto, problema, solución, stac
 - **Stack**: TypeScript / Node.js, PostgreSQL con Prisma ORM (en producción corre en un contenedor Docker propio; en desarrollo local usa un Postgres embebido, sin Docker, para no depender de tenerlo instalado). PDF con Puppeteer: el recibo se renderiza como HTML/CSS y se convierte a PDF con Chromium headless, con un pool acotado de instancias para no consumir toda la RAM al emitir en lote.
 - **Roadmap**: comparación entre períodos, detección de anomalías con IA (descuentos inusuales, duplicados), asistente conversacional sobre variaciones salariales.
 - **Estado**: proyecto propio en piloto real con un estudio contable (un cliente concreto, usándolo con datos reales de empresas y empleados, no solo demos). Pasó una etapa de QA funcional completa con veredicto favorable. Sigue en validación de producto/mercado: un solo cliente piloto por ahora, todavía no es un producto con múltiples clientes pagando. No presentarlo como producto comercial consolidado.
-- [FALTA] Link al repo: github.com/facundo-grodriguez/recibos-de-sueldo (confirmar público y limpio).
+- Repo: github.com/facundo-grodriguez/recibos-de-sueldo (público, historial auditado, sin credenciales ni datos reales). Capturas con datos de ejemplo (vista previa y PDF).
 - **Regla crítica**: nada de recibos ni nombres reales. Solo datos de ejemplo.
 
 ### 5.3 Bot de Telegram para administrar alquileres
@@ -74,8 +84,7 @@ Cada caso de estudio: título, una línea de contexto, problema, solución, stac
 - **IA**: OpenAI con function calling, 19 herramientas (buscar persona, registrar pago, consultar contrato, etc.). El modelo solo interpreta lenguaje natural; la lógica y los datos viven en el código y en Postgres. Hay reglas para que no se filtren IDs internos ni errores de SQL.
 - **Stack**: TypeScript sobre Node 22+, grammY (webhook en Render, 24/7, ping con GitHub Actions), Postgres en Supabase con Drizzle y drizzle-kit, node-cron, zod, Vitest, Biome. Servicio externo para IPC: API de RapidAPI.
 - **Estado**: en producción, con datos reales. Pendiente cargar la clave de la API de IPC. Roadmap: interfaz web de solo lectura y WhatsApp como canal.
-- [VERIFICAR contra el repo antes de publicar]: versión (9.1.0), modelo de IA por defecto, cantidad de herramientas. El resumen es de hace ~85 días.
-- [FALTA] Subir el repo a GitHub (hoy no está).
+- Verificado contra el repo `administracion-alquileres` (hoy público): versión 9.1.0, modelo de IA por defecto `gpt-5.4`, 19 herramientas registradas.
 - **Regla crítica**: la base tiene datos reales de personas. Capturas solo con datos de ejemplo.
 
 ## 6. Reglas para todo el trabajo
@@ -89,19 +98,18 @@ Cada caso de estudio: título, una línea de contexto, problema, solución, stac
 
 ## 7. Pasos (uno por vez, cada uno con criterio de "listo")
 
-| # | Paso | Listo cuando |
-|---|------|--------------|
-| 1 | Crear el repo `portfolio` con el esqueleto de carpetas, `.gitignore` y README | Repo clonado en el server y primer commit subido |
-| 2 | Escribir los textos de las secciones y los 3 casos de estudio | Facundo aprobó cada texto, sin ningún [FALTA] resuelto con datos inventados |
-| 3 | Maquetar `index.html` + `styles.css` con el estilo definido (sin capturas todavía) | La página se ve bien en escritorio y celular |
-| 4 | Preparar capturas con datos de ejemplo e insertarlas | Cada proyecto tiene 1 a 2 imágenes sin datos reales |
-| 5 | Auditoría de seguridad de los repos que se linkean (tokens, `.env`, datos personales) | Checklist sin pendientes |
-| 6 | Publicar en GitHub Pages | URL pública funcionando |
-| 7 | Actualizar LinkedIn: link del portfolio en Información de contacto y en Destacados, con los 3 repos | Perfil enlazado al portfolio |
+| # | Paso | Listo cuando | Estado |
+|---|------|--------------|--------|
+| 1 | Crear el repo `portfolio` con el esqueleto de carpetas, `.gitignore` y README | Repo clonado en el server y primer commit subido | Hecho |
+| 2 | Escribir los textos de las secciones y los 3 casos de estudio | Facundo aprobó cada texto, sin ningún [FALTA] resuelto con datos inventados | Hecho |
+| 3 | Maquetar `index.html` + `styles.css` con el estilo definido (sin capturas todavía) | La página se ve bien en escritorio y celular | Hecho |
+| 4 | Preparar capturas con datos de ejemplo e insertarlas | Cada proyecto tiene 1 a 2 imágenes sin datos reales | Hecho |
+| 5 | Auditoría de seguridad de los repos que se linkean (tokens, `.env`, datos personales) | Checklist sin pendientes | Hecho |
+| 6 | Publicar en GitHub Pages | URL pública funcionando | Hecho |
+| 7 | Actualizar LinkedIn: link del portfolio en Información de contacto y en Destacados, con los 3 repos | Perfil enlazado al portfolio | Pendiente (lo hace Facundo) |
 
-## 8. Lo que tiene que aportar Facundo
+## 8. Lo que tiene que aportar Facundo (pendientes)
 
-- Mail público a mostrar.
-- Repos de GitHub públicos y limpios (el de alquileres todavía hay que subirlo).
-- Capturas con datos de ejemplo de los 3 proyectos.
-- Verificar los datos del bot de alquileres contra el repo (versión, modelo, herramientas).
+- Paso 7: poner el link de la web en LinkedIn (Información de contacto y Destacados, con los 3 repos).
+- Opcional: actualizar el CV (no menciona el bot de alquileres) y reemplazar `cv/Facundo_Rodriguez_CV.pdf`.
+- Opcional: recapturar el dashboard de WhatsApp a mayor resolución y las capturas de alquileres con montos coherentes.
