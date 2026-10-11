@@ -108,11 +108,3 @@
     });
   });
 })();
-
-// Luz de pileta: se queda quieta si el visitante prefiere menos movimiento.
-(function () {
-  var svg = document.querySelector(".caustics");
-  if (svg && window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches && svg.pauseAnimations) {
-    svg.pauseAnimations();
-  }
-})();
