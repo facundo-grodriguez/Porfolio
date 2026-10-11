@@ -271,18 +271,11 @@ code {
 .tab[aria-selected="true"] .dot { background: var(--on-accent); }
 .tab:focus-visible { outline: 2px solid var(--text); outline-offset: 2px; }
 
-.js .panels { display: grid; }
-.js .panels > .project {
-  grid-area: 1 / 1;
-  margin: 0;
-  visibility: hidden;
-  opacity: 0;
-}
-.js .panels > .project.is-active { visibility: visible; opacity: 1; transition: opacity 0.2s; }
-.js .project { display: flex; flex-direction: column; }
-.js .project > p:last-child { margin-top: auto; padding-top: 12px; }
+.js .panels > .project { display: none; margin: 0; }
+.js .panels > .project.is-active { display: flex; flex-direction: column; animation: aparecer 0.2s ease-out; }
+@keyframes aparecer { from { opacity: 0; } to { opacity: 1; } }
 .js .project--terminal { border-top-left-radius: 0; }
-@media (prefers-reduced-motion: reduce) { .js .panels > .project.is-active { transition: none; } }
+@media (prefers-reduced-motion: reduce) { .js .panels > .project.is-active { animation: none; } }
 
 /* Capturas: misma altura por fila */
 .shots { display: flex; gap: 16px; margin: 0 0 12px; align-items: flex-start; }

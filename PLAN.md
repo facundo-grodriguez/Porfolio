@@ -17,7 +17,7 @@ Perfil: Backend / Full Stack Developer (JS, Node.js, SQL Server) con foco en IA 
 - Tecnología: HTML + CSS + un `js/main.js` mínimo (solapas de proyectos, visor de imágenes, botón de volver arriba). Sin frameworks ni dependencias.
 - Estilo (cambió respecto del plan original): fondo casi negro azulado, texto claro y escala pastel en vez del naranja del banner, porque el naranja sobre oscuro se parecía demasiado a la interfaz de Claude. Lavanda como color base; por estado de proyecto: menta (en producción), durazno (en piloto), lavanda (en pruebas). Nombre en Caveat (manuscrita), texto en Space Grotesk, etiquetas y código en JetBrains Mono. Esquinas casi rectas. Sin adornos de natación (se probaron olas, carril, luz de agua y boya y se descartaron).
 - Contacto público: mail, LinkedIn, GitHub y CV descargable. Sin teléfono.
-- Proyectos en solapas (Alquileres, Recibos, WhatsApp) con panel de alto fijo; cada tarjeta tiene un estilo propio (terminal, plano, laboratorio). Las capturas se abren en un visor con fondo borroso y zoom.
+- Proyectos en solapas (Alquileres, Recibos, WhatsApp), cada tarjeta con el alto de su contenido; cada tarjeta tiene un estilo propio (terminal, plano, laboratorio). Las capturas se abren en un visor con fondo borroso y zoom.
 - Orden de la página: Presentación, Proyectos, Experiencia, Stack y formación, Contacto.
 - La foto es la del perfil de GitHub (`img/foto.png`).
 - Tono: directo, honesto sobre el estado de cada proyecto, sin frases genéricas de IA ("apasionado", "soluciones innovadoras", etc.).
