@@ -234,7 +234,7 @@ h2::after { content: ""; flex: 1; height: 1px; background: linear-gradient(90deg
 }
 
 /* Visor de imágenes */
-.shots a { cursor: zoom-in; }
+.shots a { cursor: pointer; }
 .lightbox {
   position: fixed;
   inset: 0;
