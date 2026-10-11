@@ -332,8 +332,9 @@ code {
 .stack dd { margin: 0; }
 
 /* Contacto y pie */
-#contacto { padding-bottom: 32px; }
-#contacto p { margin: 0; }
+#contacto { padding-bottom: 40px; }
+.contact-lead { margin: 0 0 6px; color: var(--muted); }
+.contact-mail { margin: 0 0 22px; font-size: clamp(1.2rem, 4.5vw, 1.8rem); font-weight: 700; letter-spacing: -0.01em; }
 .foot {
   padding-top: 24px;
   padding-bottom: 40px;
@@ -343,27 +344,28 @@ code {
   font-size: 0.8rem;
 }
 
-/* Volver arriba */
+/* Volver arriba: una boya de aguas abiertas */
 .to-top {
   position: fixed;
-  right: 20px;
-  bottom: 20px;
+  right: 18px;
+  bottom: 18px;
   z-index: 50;
-  width: 46px;
-  height: 46px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border: 1px solid var(--accent);
-  border-radius: 2px;
-  background: var(--accent);
-  color: var(--on-accent);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+  width: 48px;
+  height: 60px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--accent);
+  filter: drop-shadow(0 6px 10px rgba(0, 0, 0, 0.55));
   cursor: pointer;
+  animation: bob 4.5s ease-in-out infinite;
 }
+.to-top svg { display: block; }
 .to-top[hidden] { display: none; }
-.to-top:hover { background: var(--bg); color: var(--accent); }
-.to-top:focus-visible { outline: 2px solid var(--text); outline-offset: 3px; }
+.to-top:hover { color: var(--text); }
+.to-top:focus-visible { outline: 2px solid var(--text); outline-offset: 4px; border-radius: 8px; }
+@keyframes bob { 0%, 100% { transform: translateY(0) rotate(-2deg); } 50% { transform: translateY(-4px) rotate(2deg); } }
+@media (prefers-reduced-motion: reduce) { .to-top { animation: none; } }
 
 /* Visor de imágenes */
 .lightbox {
