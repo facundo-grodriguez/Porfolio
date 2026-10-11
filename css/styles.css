@@ -107,6 +107,29 @@ code {
   border-radius: 4px;
 }
 
+/* Capturas */
+.shots {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  margin: 0 0 8px;
+  align-items: start;
+}
+.shots figure { margin: 0; }
+.shots img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+}
+.shots figcaption { margin-top: 8px; font-size: 0.85rem; color: var(--muted); }
+.shots + dl { margin-top: 0; }
+
+@media (max-width: 520px) {
+  .shots { grid-template-columns: 1fr; }
+}
+
 /* Stack */
 .stack {
   margin: 0;
