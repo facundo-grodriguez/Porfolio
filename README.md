@@ -16,8 +16,7 @@ HTML + CSS + un poco de JavaScript, sin frameworks, publicados con GitHub Pages:
 - `js/`: solapas, visor de imágenes y botón de volver arriba
 - `cv/`: CV en PDF
 - `img/`: capturas de cada proyecto (solo datos de ejemplo)
-- `PLAN.md`: plan de trabajo y reglas del proyecto
 
 ## Estado
 
-Publicado. El plan de trabajo y las decisiones están en `PLAN.md`.
+Publicado.

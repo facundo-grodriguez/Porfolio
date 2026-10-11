@@ -14,3 +14,6 @@ desktop.ini
 # Dependencias y builds
 node_modules/
 dist/
+
+# Notas de trabajo (solo locales)
+PLAN.md
