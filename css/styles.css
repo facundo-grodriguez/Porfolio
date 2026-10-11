@@ -124,6 +124,8 @@ code {
   border-radius: 8px;
 }
 .shots figcaption { margin-top: 8px; font-size: 0.85rem; color: var(--muted); }
+.shots-stack { grid-template-columns: 1fr; gap: 24px; }
+.shots-stack .doc { max-width: 560px; }
 .shots + dl { margin-top: 0; }
 
 @media (max-width: 520px) {
