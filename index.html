@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Facundo Rodriguez — Backend / Full Stack Developer</title>
+  <meta name="description" content="Portfolio de Facundo Rodriguez, Backend / Full Stack Developer con Node.js, TypeScript y SQL, con foco en IA aplicada.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <header class="hero">
+    <div class="wrap">
+      <h1 class="name">Facundo Rodriguez</h1>
+      <p class="role">Backend / Full Stack Developer · Node.js, TypeScript, SQL · IA aplicada</p>
+      <p class="links">
+        <a class="btn btn-primary" href="https://linkedin.com/in/facundo-grodriguez">LinkedIn</a>
+        <a class="btn" href="https://github.com/facundo-grodriguez">GitHub</a>
+      </p>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section id="presentacion">
+      <h2>Presentación</h2>
+      <ul class="intro">
+        <li>Técnico en Sistemas (último año). Desarrollo software backend y full stack con JavaScript, Node.js y SQL Server.</li>
+        <li>Me interesa la IA aplicada: usar un modelo donde aporta y dejar la lógica y los datos en código propio.</li>
+        <li>Los tres proyectos de abajo son míos, tienen código público y cada uno indica en qué estado está de verdad.</li>
+        <li>Busco roles backend, full stack o IA aplicada.</li>
+      </ul>
+    </section>
+
+    <section id="proyectos">
+      <h2>Proyectos</h2>
+
+      <article class="project">
+        <h3>Bot de WhatsApp para atención de primer contacto</h3>
+        <p class="lead">Asistente que responde preguntas frecuentes de un negocio y deriva a un vendedor cuando detecta intención de compra.</p>
+        <dl>
+          <dt>Qué hace</dt>
+          <dd>Recibe los mensajes por la API oficial de WhatsApp Business de Meta (migré desde WAHA). Un motor de reglas responde las FAQs cargadas. Si detecta intención de compra, deja de autoresponder y pasa la conversación a una persona. Un dashboard muestra las conversaciones pendientes (las derivadas arriba), métricas de uso y el chat.</dd>
+          <dt>Cómo está armado</dt>
+          <dd>Dos interfaces, <code>ResponseEngine</code> y <code>MessagingProvider</code>, permiten cambiar el motor de respuestas o el canal sin reescribir el resto. Hay una IA implementada como fallback, restringida a las FAQs, apagada por defecto.</dd>
+          <dt>Stack</dt>
+          <dd>Node.js, TypeScript, Fastify, SQLite con Drizzle ORM, p-queue.</dd>
+          <dt>Estado</dt>
+          <dd>Proyecto personal en pruebas, sin cliente real todavía. Las métricas del dashboard son de prueba.</dd>
+        </dl>
+        <p><a class="repo" href="https://github.com/facundo-grodriguez/whatsapp-bot">Ver código →</a></p>
+      </article>
+
+      <article class="project">
+        <h3>Recibos de sueldo — Anexo III</h3>
+        <p class="lead">Sistema que genera el recibo de sueldo en el nuevo formato Anexo III a partir de liquidaciones ya calculadas.</p>
+        <dl>
+          <dt>Problema</dt>
+          <dd>Un cambio normativo exige un nuevo formato de recibo.</dd>
+          <dt>Solución</dt>
+          <dd>No recalcula sueldos ni reemplaza a un sistema de liquidación. Toma la liquidación que la empresa ya calculó (Excel), valida la estructura, mapea columnas y conceptos, identifica empleados y períodos, muestra una vista previa con validaciones de consistencia y emite el PDF final. Guarda un snapshot de cada recibo emitido para tener trazabilidad.</dd>
+          <dt>Detalle técnico</dt>
+          <dd>El recibo se renderiza como HTML/CSS y se convierte a PDF con Chromium headless (Puppeteer), con un pool acotado de instancias para no agotar la RAM al emitir en lote.</dd>
+          <dt>Stack</dt>
+          <dd>TypeScript, Node.js, PostgreSQL con Prisma, Puppeteer, Docker.</dd>
+          <dt>Estado</dt>
+          <dd>En piloto real con un estudio contable: un solo cliente, con datos reales de empresas y empleados. Pasó una etapa de QA funcional con veredicto favorable. Todavía no es un producto con varios clientes.</dd>
+          <dt>Próximos pasos</dt>
+          <dd>Comparación entre períodos, detección de anomalías con IA y un asistente sobre variaciones salariales.</dd>
+        </dl>
+        <p><a class="repo" href="https://github.com/facundo-grodriguez/recibos-de-sueldo">Ver código →</a></p>
+      </article>
+
+      <article class="project">
+        <h3>Bot de Telegram para administrar alquileres</h3>
+        <p class="lead">Bot que reemplaza planillas, mensajes sueltos y memoria en la administración de alquileres. Lo usa una sola persona, el administrador.</p>
+        <dl>
+          <dt>Qué centraliza</dt>
+          <dd>Personas (inquilinos, propietarios, garantes), propiedades, contratos, pagos, gastos (expensas, ABL, ARBA, servicios, seguros) y un balance que se arma solo. Manda un resumen diario de qué cobrar y qué vence, y calcula la actualización por IPC siempre sobre el monto y la fecha originales del contrato.</dd>
+          <dt>Dos caminos</dt>
+          <dd>Los flujos guiados con botones son una máquina de estados, sin IA. El texto libre lo interpreta OpenAI con function calling y 19 herramientas. El modelo solo interpreta el lenguaje; la lógica y los datos viven en el código y en Postgres, y hay reglas para que no se filtren IDs internos ni errores de SQL.</dd>
+          <dt>Stack</dt>
+          <dd>TypeScript (Node 22+), grammY, PostgreSQL en Supabase con Drizzle, node-cron, zod, Vitest, Biome. Desplegado en Render.</dd>
+          <dt>Estado</dt>
+          <dd>En producción, con datos reales. Falta cargar la clave de la API de IPC para la actualización automática. Próximos pasos: interfaz web de solo lectura y WhatsApp como canal.</dd>
+        </dl>
+        <p><a class="repo" href="https://github.com/facundo-grodriguez/administracion-alquileres">Ver código →</a></p>
+      </article>
+    </section>
+
+    <section id="stack">
+      <h2>Stack</h2>
+      <dl class="stack">
+        <dt>Lenguajes</dt><dd>JavaScript, TypeScript, SQL</dd>
+        <dt>Backend</dt><dd>Node.js, Fastify, grammY</dd>
+        <dt>Datos</dt><dd>PostgreSQL, SQL Server, SQLite, Prisma, Drizzle ORM</dd>
+        <dt>IA</dt><dd>OpenAI (function calling)</dd>
+        <dt>Herramientas</dt><dd>Docker, Git, GitHub Actions, Vitest</dd>
+      </dl>
+    </section>
+
+    <section id="contacto">
+      <h2>Contacto</h2>
+      <p>
+        <a href="mailto:facundo-grodriguez@hotmail.com">facundo-grodriguez@hotmail.com</a> ·
+        <a href="https://linkedin.com/in/facundo-grodriguez">LinkedIn</a> ·
+        <a href="https://github.com/facundo-grodriguez">GitHub</a>
+      </p>
+    </section>
+  </main>
+
+  <footer class="wrap foot">Facundo Rodriguez</footer>
+</body>
+</html>
