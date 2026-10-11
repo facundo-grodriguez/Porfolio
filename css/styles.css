@@ -245,9 +245,56 @@ code {
   color: var(--accent);
 }
 
+/* Solapas de proyectos: sin JS se ven todas apiladas; con JS ocupan siempre el mismo lugar */
+.tabs { display: none; }
+.js .tabs { display: flex; gap: 8px; margin: 0 0 -1px; position: relative; z-index: 1; }
+.tab {
+  --accent-rgb: 190, 175, 255;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 10px;
+  border: 1px solid var(--line);
+  border-bottom: 0;
+  border-radius: 4px 4px 0 0;
+  background: transparent;
+  color: var(--muted);
+  font-family: var(--mono);
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+.tab .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--tab-color); }
+.tab--terminal { --tab-color: var(--mint); --tab-rgb: var(--mint-rgb); }
+.tab--doc { --tab-color: var(--peach); --tab-rgb: var(--peach-rgb); }
+.tab--lab { --tab-color: var(--accent); --tab-rgb: 190, 175, 255; }
+.tab:hover { color: var(--text); border-color: rgba(var(--tab-rgb), 0.6); }
+.tab[aria-selected="true"] {
+  background: var(--tab-color);
+  border-color: var(--tab-color);
+  color: var(--on-accent);
+}
+.tab[aria-selected="true"] .dot { background: var(--on-accent); }
+.tab:focus-visible { outline: 2px solid var(--text); outline-offset: 2px; }
+
+.js .panels { display: grid; }
+.js .panels > .project {
+  grid-area: 1 / 1;
+  margin: 0;
+  visibility: hidden;
+  opacity: 0;
+}
+.js .panels > .project.is-active { visibility: visible; opacity: 1; transition: opacity 0.2s; }
+.js .project { display: flex; flex-direction: column; }
+.js .project > p:last-child { margin-top: auto; padding-top: 12px; }
+.js .project--terminal { border-top-left-radius: 0; }
+@media (prefers-reduced-motion: reduce) { .js .panels > .project.is-active { transition: none; } }
+
 /* Capturas: misma altura por fila */
 .shots { display: flex; gap: 16px; margin: 0 0 12px; align-items: flex-start; }
-.shots figure { margin: 0; flex: var(--ar) 1 0; min-width: 0; }
+.shots figure { margin: 0; flex: var(--ar) 1 0; min-width: 0; max-width: calc(var(--ar) * 400px); }
 .shots a { cursor: pointer; }
 .shots img {
   display: block;
@@ -355,12 +402,14 @@ body.no-scroll { overflow: hidden; }
   .hero { padding: 48px 0 40px; }
   .hero-grid { grid-template-columns: 1fr; gap: 28px; }
   .links { gap: 8px; }
+  .js .tabs { gap: 4px; }
+  .tab { padding: 10px 4px; font-size: 0.74rem; gap: 5px; min-width: 0; }
   .btn { padding: 9px 13px; }
   .avatar { order: -1; width: 140px; height: 168px; outline-offset: 8px; margin-left: 8px; }
   .project { padding: 18px; }
   .project--terminal::before { margin: 0 -18px 18px; }
   .shots { flex-direction: column; align-items: stretch; }
-  .shots figure { flex: none; width: 100%; max-width: calc(var(--ar) * 560px); }
+  .shots figure { flex: none; width: 100%; max-width: calc(var(--ar) * 520px); }
   .stack { grid-template-columns: 1fr; gap: 2px; }
   .stack dd { margin-bottom: 10px; }
 }
