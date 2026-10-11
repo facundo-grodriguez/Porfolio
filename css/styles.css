@@ -307,6 +307,14 @@ code {
 .shots a:hover img { border-color: var(--accent); }
 .shots figcaption { margin-top: 8px; font-size: 0.82rem; color: var(--muted); }
 
+/* Una sola captura con notas al lado */
+.shots-single { align-items: flex-start; gap: 24px; }
+.shots-single figure { flex: 0 1 480px; max-width: 480px; }
+.shots-single img { aspect-ratio: 480 / 600; object-fit: cover; object-position: top; }
+.shots-notes { flex: 1; margin: 0; padding-left: 1.1rem; color: var(--muted); font-size: 0.92rem; }
+.shots-notes li { margin-bottom: 10px; }
+.shots-notes li::marker { color: var(--accent); }
+
 /* Experiencia */
 .job { margin-bottom: 28px; padding-left: 16px; border-left: 1px solid var(--line); }
 .job h3 { margin: 0; font-size: 1.1rem; }
@@ -410,6 +418,7 @@ body.no-scroll { overflow: hidden; }
   .project--terminal::before { margin: 0 -18px 18px; }
   .shots { flex-direction: column; align-items: stretch; }
   .shots figure { flex: none; width: 100%; max-width: calc(var(--ar) * 520px); }
+  .shots-single figure { max-width: 100%; }
   .stack { grid-template-columns: 1fr; gap: 2px; }
   .stack dd { margin-bottom: 10px; }
 }
