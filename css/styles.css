@@ -211,8 +211,6 @@ h2 { display: flex; align-items: center; gap: 16px; }
 h2::after { content: ""; flex: 1; height: 1px; background: linear-gradient(90deg, var(--accent), transparent); opacity: 0.5; }
 
 /* Tarjetas */
-.project { transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s; }
-.project:hover { border-color: var(--accent); transform: translateY(-2px); box-shadow: 0 12px 40px rgba(255, 90, 54, 0.08); }
 
 /* Capturas: todas de la misma altura por fila */
 .shots { display: flex; gap: 16px; margin: 0 0 12px; align-items: flex-start; }
@@ -233,10 +231,6 @@ h2::after { content: ""; flex: 1; height: 1px; background: linear-gradient(90deg
   .avatar { order: -1; width: 140px; height: 140px; }
   .shots { flex-direction: column; align-items: stretch; }
   .shots figure { flex: none; width: 100%; max-width: calc(var(--ar) * 560px); }
-}
-@media (prefers-reduced-motion: reduce) {
-  .project { transition: none; }
-  .project:hover { transform: none; }
 }
 
 /* Visor de imágenes */

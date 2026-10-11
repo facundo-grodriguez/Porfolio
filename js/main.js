@@ -22,8 +22,8 @@
   function setZoom(on) {
     overlay.classList.toggle("zoomed", on);
     if (on) {
-      // 2x del tamaño original: las capturas son chicas y el texto se lee mejor así.
-      img.style.width = img.naturalWidth * 2 + "px";
+      // Tamaño real de la captura: un zoom suave, sin pixelar.
+      img.style.width = img.naturalWidth + "px";
       overlay.scrollLeft = (overlay.scrollWidth - overlay.clientWidth) / 2;
       overlay.scrollTop = 0;
     } else {
