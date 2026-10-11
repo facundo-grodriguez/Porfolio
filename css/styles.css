@@ -4,8 +4,12 @@
   --line: #1e232a;
   --text: #ecedee;
   --muted: #8b929b;
-  --accent: #c6ff3d;
-  --accent-rgb: 198, 255, 61;
+  --accent: #beafff;
+  --accent-rgb: 190, 175, 255;
+  --mint: #96e7c4;
+  --mint-rgb: 150, 231, 196;
+  --peach: #ffcba4;
+  --peach-rgb: 255, 203, 164;
   --on-accent: #07080a;
   --mono: "JetBrains Mono", ui-monospace, "Cascadia Code", Consolas, monospace;
 }
@@ -23,7 +27,6 @@ body {
   font-size: 1rem;
   line-height: 1.65;
   overflow-wrap: break-word;
-  counter-reset: sec;
 }
 
 .wrap { max-width: 800px; margin: 0 auto; padding: 0 20px; }
@@ -102,7 +105,6 @@ a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
 section { padding: 56px 0 8px; }
 
 h2 {
-  counter-increment: sec;
   display: flex;
   align-items: center;
   gap: 14px;
@@ -114,7 +116,6 @@ h2 {
   text-transform: uppercase;
   color: var(--text);
 }
-h2::before { content: "0" counter(sec); color: var(--accent); }
 h2::after { content: ""; flex: 1; height: 1px; background: var(--line); }
 
 .intro p { margin: 0 0 14px; }
@@ -187,6 +188,10 @@ code {
   padding: 1px 6px;
   border-radius: 2px;
 }
+
+/* Color por estado: menta = producción, durazno = piloto, lavanda = pruebas */
+.project--terminal { --accent: var(--mint); --accent-rgb: var(--mint-rgb); }
+.project--doc { --accent: var(--peach); --accent-rgb: var(--peach-rgb); }
 
 /* Tarjeta 1: ventana de terminal */
 .project--terminal {
