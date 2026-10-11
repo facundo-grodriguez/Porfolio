@@ -12,15 +12,19 @@
 </head>
 <body>
   <header class="hero">
-    <div class="wrap">
-      <h1 class="name">Facundo Rodriguez</h1>
-      <p class="role">Backend / Full Stack Developer · Node.js, TypeScript, SQL Server · IA aplicada</p>
-      <p class="hook">Un bot en producción con datos reales y un sistema en piloto con un estudio contable.</p>
-      <p class="links">
-        <a class="btn btn-primary" href="cv/Facundo_Rodriguez_CV.pdf">Descargar CV</a>
-        <a class="btn" href="https://linkedin.com/in/facundo-grodriguez">LinkedIn</a>
-        <a class="btn" href="https://github.com/facundo-grodriguez">GitHub</a>
-      </p>
+    <div class="wrap hero-grid">
+      <div class="hero-text">
+        <p class="hello">Hola, soy</p>
+        <h1 class="name">Facundo Rodriguez</h1>
+        <p class="role">Backend / Full Stack Developer · Node.js, TypeScript, SQL Server · IA aplicada</p>
+        <p class="hook">Un bot en producción con datos reales y un sistema en piloto con un estudio contable.</p>
+        <p class="links">
+          <a class="btn btn-primary" href="cv/Facundo_Rodriguez_CV.pdf">Descargar CV</a>
+          <a class="btn" href="https://linkedin.com/in/facundo-grodriguez">LinkedIn</a>
+          <a class="btn" href="https://github.com/facundo-grodriguez">GitHub</a>
+        </p>
+      </div>
+      <img class="avatar" src="img/foto.png" alt="Facundo Rodriguez" width="460" height="460">
     </div>
   </header>
 
@@ -44,11 +48,11 @@
         <p class="lead">Reemplaza planillas, mensajes sueltos y memoria en la administración de alquileres. Lo usa una sola persona, el administrador.</p>
         <p class="status">Funcionando con datos reales. Falta cargar la clave de la API de IPC para la actualización automática.</p>
         <div class="shots">
-          <figure>
+          <figure style="--ar:0.502">
             <a href="img/alquileres/pago-guiado.jpg"><img src="img/alquileres/pago-guiado.jpg" alt="Chat de Telegram: flujo guiado para registrar un pago, con confirmación final" loading="lazy" width="640" height="1274"></a>
             <figcaption>Flujo guiado, sin IA: botones y registro de un pago paso a paso.</figcaption>
           </figure>
-          <figure>
+          <figure style="--ar:0.573">
             <a href="img/alquileres/balance-y-agenda.jpg"><img src="img/alquileres/balance-y-agenda.jpg" alt="Chat de Telegram: consulta de balance en lenguaje natural y resumen de agenda" loading="lazy" width="640" height="1117"></a>
             <figcaption>Texto libre con IA: balance de una propiedad y agenda del día.</figcaption>
           </figure>
@@ -77,12 +81,12 @@
         </div>
         <p class="lead">Genera el recibo de sueldo en el nuevo formato Anexo III a partir de liquidaciones ya calculadas.</p>
         <p class="status">Piloto real con un estudio contable: un solo cliente, con datos reales. Pasó una etapa de QA funcional con veredicto favorable. Todavía no es un producto con varios clientes.</p>
-        <div class="shots shots-stack">
-          <figure>
+        <div class="shots">
+          <figure style="--ar:1.111">
             <a href="img/recibos/vista-previa-importacion.png"><img src="img/recibos/vista-previa-importacion.png" alt="Vista previa de una importación: conceptos por empleado con estado de validación" loading="lazy" width="1425" height="1283"></a>
             <figcaption>Vista previa de la importación: conceptos por empleado y validaciones. Los totales aparecen en $0 hasta clasificar los conceptos. Datos de ejemplo.</figcaption>
           </figure>
-          <figure class="doc">
+          <figure style="--ar:0.917">
             <a href="img/recibos/recibo-anexo-iii.png"><img src="img/recibos/recibo-anexo-iii.png" alt="Recibo de sueldo en formato Anexo III generado en PDF" loading="lazy" width="792" height="864"></a>
             <figcaption>PDF final en formato Anexo III. Datos de ejemplo.</figcaption>
           </figure>
@@ -112,11 +116,11 @@
         <p class="lead">Responde preguntas frecuentes de un negocio y deriva a un vendedor cuando detecta intención de compra.</p>
         <p class="status">Proyecto personal, sin cliente real todavía. Las métricas del dashboard son de prueba.</p>
         <div class="shots">
-          <figure>
+          <figure style="--ar:0.553">
             <a href="img/whatsapp-bot/dashboard.jpg"><img src="img/whatsapp-bot/dashboard.jpg" alt="Dashboard del bot: conversaciones pendientes de revisión y métricas generales" loading="lazy" width="480" height="868"></a>
             <figcaption>Dashboard: pendientes arriba y métricas. Datos de prueba.</figcaption>
           </figure>
-          <figure>
+          <figure style="--ar:1">
             <a href="img/whatsapp-bot/chat.jpg"><img src="img/whatsapp-bot/chat.jpg" alt="Ilustración de una conversación de WhatsApp: el bot responde FAQs y deriva a ventas" loading="lazy" width="800" height="800"></a>
             <figcaption>Ilustración de una conversación de ejemplo: responde FAQs y deriva a ventas. No es una captura real.</figcaption>
           </figure>
