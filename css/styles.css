@@ -60,10 +60,10 @@ a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
 }
 .name {
   margin: 0;
-  font-family: "Caveat", cursive;
-  font-weight: 600;
-  font-size: clamp(3rem, 12vw, 5rem);
+  font-weight: 700;
+  font-size: clamp(2.4rem, 9vw, 3.8rem);
   line-height: 1.05;
+  letter-spacing: -0.03em;
 }
 .role { margin: 12px 0 10px; color: var(--muted); font-family: var(--mono); font-size: 0.82rem; letter-spacing: 0.02em; }
 .hook { margin: 0 0 28px; font-size: 1.2rem; font-weight: 500; max-width: 34ch; }
