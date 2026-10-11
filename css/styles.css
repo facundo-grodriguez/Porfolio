@@ -4,12 +4,12 @@
   --line: #1e232a;
   --text: #ecedee;
   --muted: #8b929b;
-  --accent: #beafff;
-  --accent-rgb: 190, 175, 255;
+  --accent: #f6e27f;
+  --accent-rgb: 246, 226, 127;
   --mint: #96e7c4;
   --mint-rgb: 150, 231, 196;
-  --peach: #ffcba4;
-  --peach-rgb: 255, 203, 164;
+  --peach: #ffb4a2;
+  --peach-rgb: 255, 180, 162;
   --on-accent: #07080a;
   --mono: "JetBrains Mono", ui-monospace, "Cascadia Code", Consolas, monospace;
 }
@@ -241,7 +241,7 @@ code {
 .tabs { display: none; }
 .js .tabs { display: flex; gap: 8px; margin: 0 0 -1px; position: relative; z-index: 1; }
 .tab {
-  --accent-rgb: 190, 175, 255;
+  --accent-rgb: 246, 226, 127;
   flex: 1;
   display: flex;
   align-items: center;
@@ -261,7 +261,7 @@ code {
 .tab .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--tab-color); }
 .tab--terminal { --tab-color: var(--mint); --tab-rgb: var(--mint-rgb); }
 .tab--doc { --tab-color: var(--peach); --tab-rgb: var(--peach-rgb); }
-.tab--lab { --tab-color: var(--accent); --tab-rgb: 190, 175, 255; }
+.tab--lab { --tab-color: var(--accent); --tab-rgb: 246, 226, 127; }
 .tab:hover { color: var(--text); border-color: rgba(var(--tab-rgb), 0.6); }
 .tab[aria-selected="true"] {
   background: var(--tab-color);
