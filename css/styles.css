@@ -40,6 +40,7 @@ a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
   position: relative;
   overflow: hidden;
   padding: 72px 0 56px;
+  border-bottom: 1px solid var(--line);
   background:
     radial-gradient(480px 300px at 88% 25%, rgba(var(--accent-rgb), 0.14), transparent 70%),
     linear-gradient(var(--line) 1px, transparent 1px) 0 0 / 40px 40px,
@@ -92,32 +93,60 @@ a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
 .btn-primary { background: var(--accent); border-color: var(--accent); color: var(--on-accent); }
 .btn-primary:hover { background: transparent; color: var(--accent); }
 
-/* Olas: borde inferior de la cabecera */
-.hero::before,
-.hero::after {
-  content: "";
-  position: absolute;
+/* Carril de pileta: indicador de scroll */
+.lane {
+  position: fixed;
+  top: 0;
   left: 0;
   right: 0;
-  bottom: -1px;
-  background-repeat: repeat-x;
-  background-size: 400px 100%;
+  z-index: 40;
+  height: 18px;
   pointer-events: none;
+  background: linear-gradient(rgba(7, 8, 10, 0.92), rgba(7, 8, 10, 0));
 }
-.hero::before {
-  height: 44px;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='44' viewBox='0 0 400 44' preserveAspectRatio='none'%3E%3Cpath d='M0 22 Q100 2 200 22 T400 22 V44 H0 Z' fill='%23beafff'/%3E%3C/svg%3E");
-  opacity: 0.22;
-  animation: wave 22s linear infinite;
+.lane::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle 3px at 6px 9px, var(--mint) 96%, transparent) 0 0 / 36px 100% repeat-x,
+    radial-gradient(circle 3px at 6px 9px, var(--peach) 96%, transparent) 12px 0 / 36px 100% repeat-x,
+    radial-gradient(circle 3px at 6px 9px, var(--accent) 96%, transparent) 24px 0 / 36px 100% repeat-x,
+    linear-gradient(var(--line), var(--line)) 0 9px / 100% 1px no-repeat;
+  opacity: 0.75;
 }
-.hero::after {
-  height: 30px;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='44' viewBox='0 0 400 44' preserveAspectRatio='none'%3E%3Cpath d='M0 22 Q100 2 200 22 T400 22 V44 H0 Z' fill='%2307080a'/%3E%3C/svg%3E");
-  animation: wave 14s linear infinite reverse;
+.lane::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background: var(--text);
+  opacity: 0.55;
 }
-@keyframes wave { from { background-position-x: 0; } to { background-position-x: 400px; } }
-@media (prefers-reduced-motion: reduce) {
-  .hero::before, .hero::after { animation: none; }
+.swimmer {
+  position: absolute;
+  top: 3px;
+  left: calc(var(--p, 0) * (100% - 30px));
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow:
+    -9px 0 0 -3px rgba(var(--accent-rgb), 0.55),
+    -16px 0 0 -4px rgba(var(--accent-rgb), 0.35),
+    -22px 0 0 -4.5px rgba(var(--accent-rgb), 0.2);
+}
+.swimmer::after {
+  content: "";
+  position: absolute;
+  left: 2px;
+  right: 2px;
+  top: 4px;
+  height: 3px;
+  border-radius: 2px;
+  background: var(--bg);
 }
 
 /* Secciones */

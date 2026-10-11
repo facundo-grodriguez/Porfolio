@@ -2,8 +2,13 @@
 (function () {
   var btn = document.querySelector(".to-top");
   if (!btn) return;
+  var lane = document.querySelector(".lane");
   function toggle() {
     btn.hidden = window.scrollY < 600;
+    if (lane) {
+      var max = document.documentElement.scrollHeight - window.innerHeight;
+      lane.style.setProperty("--p", max > 0 ? Math.min(1, window.scrollY / max) : 0);
+    }
   }
   window.addEventListener("scroll", toggle, { passive: true });
   btn.addEventListener("click", function () {
