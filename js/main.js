@@ -19,12 +19,26 @@
   var closeBtn = overlay.querySelector(".lightbox-close");
   var lastFocus = null;
 
+  function setZoom(on) {
+    overlay.classList.toggle("zoomed", on);
+    if (on) {
+      // 2x del tamaño original: las capturas son chicas y el texto se lee mejor así.
+      img.style.width = img.naturalWidth * 2 + "px";
+      overlay.scrollLeft = (overlay.scrollWidth - overlay.clientWidth) / 2;
+      overlay.scrollTop = 0;
+    } else {
+      img.style.width = "";
+    }
+  }
+
   function open(a) {
     var thumb = a.querySelector("img");
     lastFocus = a;
     img.src = a.getAttribute("href");
     img.alt = thumb ? thumb.alt : "";
+    setZoom(false);
     overlay.hidden = false;
+    overlay.scrollTop = 0;
     document.body.classList.add("no-scroll");
     closeBtn.focus();
   }
@@ -43,9 +57,10 @@
     });
   });
 
-  // Click fuera de la imagen (o en la X) cierra.
+  // Click en la imagen: zoom. Click fuera de la imagen o en la X: cierra.
   overlay.addEventListener("click", function (e) {
-    if (e.target !== img) close();
+    if (e.target === img) setZoom(!overlay.classList.contains("zoomed"));
+    else close();
   });
   document.addEventListener("keydown", function (e) {
     if (e.key === "Escape" && !overlay.hidden) close();
