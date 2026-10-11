@@ -10,6 +10,7 @@
 * { box-sizing: border-box; }
 
 html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
 
 body {
   margin: 0;
@@ -277,3 +278,89 @@ h2::after { content: ""; flex: 1; height: 1px; background: linear-gradient(90deg
 .lightbox-close:hover { border-color: var(--accent); color: var(--accent); }
 .lightbox-close:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
 body.no-scroll { overflow: hidden; }
+
+/* Volver arriba */
+.to-top {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  z-index: 50;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--accent);
+  border-radius: 50%;
+  background: var(--accent);
+  color: #0b0b0d;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+  cursor: pointer;
+}
+.to-top[hidden] { display: none; }
+.to-top:hover { filter: brightness(1.1); }
+.to-top:focus-visible { outline: 2px solid var(--text); outline-offset: 3px; }
+
+/* Tarjeta 1: ventana de terminal */
+.project--terminal {
+  padding-top: 0;
+  overflow: hidden;
+  background: #0e0e10;
+  border-color: rgba(255, 90, 54, 0.45);
+  box-shadow: 0 0 0 1px rgba(255, 90, 54, 0.08), 0 16px 48px rgba(255, 90, 54, 0.07);
+}
+.project--terminal::before {
+  content: "";
+  display: block;
+  height: 38px;
+  margin: 0 -24px 20px;
+  border-bottom: 1px solid var(--line);
+  background:
+    radial-gradient(circle 5px at 20px 50%, var(--accent) 96%, transparent),
+    radial-gradient(circle 5px at 40px 50%, #4a4a52 96%, transparent),
+    radial-gradient(circle 5px at 60px 50%, #4a4a52 96%, transparent),
+    #1a1a1e;
+}
+.project--terminal h3,
+.project--terminal .stackline {
+  font-family: ui-monospace, "Cascadia Code", Consolas, monospace;
+}
+.project--terminal h3::before { content: "$ "; color: var(--accent); }
+.project--terminal .stackline::before { content: "> "; color: var(--accent); }
+
+/* Tarjeta 2: plano / documento */
+.project--doc {
+  position: relative;
+  overflow: hidden;
+  border-left: 4px solid var(--accent);
+  border-radius: 4px 10px 10px 4px;
+  background:
+    linear-gradient(var(--line) 1px, transparent 1px) 0 0 / 28px 28px,
+    linear-gradient(90deg, var(--line) 1px, transparent 1px) 0 0 / 28px 28px,
+    var(--surface);
+  background-blend-mode: soft-light, soft-light, normal;
+}
+.project--doc > * { position: relative; z-index: 1; }
+.project--doc h3 { text-transform: uppercase; letter-spacing: 0.04em; font-size: 1.1rem; }
+.project--doc .lead,
+.project--doc .status,
+.project--doc details,
+.project--doc .stackline { background: var(--surface); }
+
+/* Tarjeta 3: laboratorio (en pruebas) */
+.project--lab {
+  border: 1px dashed rgba(255, 90, 54, 0.6);
+  border-radius: 22px;
+  background: linear-gradient(135deg, rgba(255, 90, 54, 0.12), rgba(20, 20, 23, 0) 45%), var(--surface);
+}
+.project--lab .head::before {
+  content: "⚗";
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: rgba(255, 90, 54, 0.15);
+  color: var(--accent);
+}

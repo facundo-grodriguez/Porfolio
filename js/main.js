@@ -1,3 +1,17 @@
+// Botón para volver arriba: aparece al bajar un rato.
+(function () {
+  var btn = document.querySelector(".to-top");
+  if (!btn) return;
+  function toggle() {
+    btn.hidden = window.scrollY < 600;
+  }
+  window.addEventListener("scroll", toggle, { passive: true });
+  btn.addEventListener("click", function () {
+    window.scrollTo({ top: 0 });
+  });
+  toggle();
+})();
+
 // Visor de imágenes: abre las capturas encima de la página, con el fondo borroso.
 // Sin JS los enlaces siguen abriendo la imagen directamente.
 (function () {
