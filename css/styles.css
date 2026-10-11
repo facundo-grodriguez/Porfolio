@@ -43,8 +43,6 @@ a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
   border-bottom: 1px solid var(--line);
   background:
     radial-gradient(480px 300px at 88% 25%, rgba(var(--accent-rgb), 0.14), transparent 70%),
-    linear-gradient(var(--line) 1px, transparent 1px) 0 0 / 40px 40px,
-    linear-gradient(90deg, var(--line) 1px, transparent 1px) 0 0 / 40px 40px,
     var(--bg);
 }
 .hero-grid { position: relative; z-index: 1; display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 40px; }
@@ -93,60 +91,17 @@ a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
 .btn-primary { background: var(--accent); border-color: var(--accent); color: var(--on-accent); }
 .btn-primary:hover { background: transparent; color: var(--accent); }
 
-/* Carril de pileta: indicador de scroll */
-.lane {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 40;
-  height: 18px;
-  pointer-events: none;
-  background: linear-gradient(rgba(7, 8, 10, 0.92), rgba(7, 8, 10, 0));
-}
-.lane::before {
-  content: "";
+/* Luz de pileta: fondo animado de la cabecera */
+.caustics {
   position: absolute;
   inset: 0;
-  background:
-    radial-gradient(circle 3px at 6px 9px, var(--mint) 96%, transparent) 0 0 / 36px 100% repeat-x,
-    radial-gradient(circle 3px at 6px 9px, var(--peach) 96%, transparent) 12px 0 / 36px 100% repeat-x,
-    radial-gradient(circle 3px at 6px 9px, var(--accent) 96%, transparent) 24px 0 / 36px 100% repeat-x,
-    linear-gradient(var(--line), var(--line)) 0 9px / 100% 1px no-repeat;
-  opacity: 0.75;
-}
-.lane::after {
-  content: "";
-  position: absolute;
-  right: 0;
-  top: 0;
-  bottom: 0;
-  width: 4px;
-  background: var(--text);
-  opacity: 0.55;
-}
-.swimmer {
-  position: absolute;
-  top: 3px;
-  left: calc(var(--p, 0) * (100% - 30px));
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-  background: var(--accent);
-  box-shadow:
-    -9px 0 0 -3px rgba(var(--accent-rgb), 0.55),
-    -16px 0 0 -4px rgba(var(--accent-rgb), 0.35),
-    -22px 0 0 -4.5px rgba(var(--accent-rgb), 0.2);
-}
-.swimmer::after {
-  content: "";
-  position: absolute;
-  left: 2px;
-  right: 2px;
-  top: 4px;
-  height: 3px;
-  border-radius: 2px;
-  background: var(--bg);
+  width: 100%;
+  height: 100%;
+  opacity: 0.2;
+  mix-blend-mode: screen;
+  pointer-events: none;
+  -webkit-mask-image: radial-gradient(ellipse 90% 100% at 85% 0%, #000 20%, transparent 85%);
+  mask-image: radial-gradient(ellipse 90% 100% at 85% 0%, #000 20%, transparent 85%);
 }
 
 /* Secciones */
