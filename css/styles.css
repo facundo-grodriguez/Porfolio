@@ -354,6 +354,8 @@ body.no-scroll { overflow: hidden; }
 @media (max-width: 640px) {
   .hero { padding: 48px 0 40px; }
   .hero-grid { grid-template-columns: 1fr; gap: 28px; }
+  .links { gap: 8px; }
+  .btn { padding: 9px 13px; }
   .avatar { order: -1; width: 140px; height: 168px; outline-offset: 8px; margin-left: 8px; }
   .project { padding: 18px; }
   .project--terminal::before { margin: 0 -18px 18px; }
