@@ -1,9 +1,34 @@
-// Botón para volver arriba: aparece al bajar un rato.
+// Modo claro / oscuro: el botón alterna y recuerda la elección; sin elección, sigue al sistema.
+(function () {
+  var root = document.documentElement;
+  var btn = document.querySelector(".theme-toggle");
+  if (!btn) return;
+  function label() {
+    btn.setAttribute("aria-label", root.dataset.theme === "light" ? "Cambiar a modo oscuro" : "Cambiar a modo claro");
+  }
+  btn.addEventListener("click", function () {
+    root.dataset.theme = root.dataset.theme === "light" ? "dark" : "light";
+    try { localStorage.setItem("theme", root.dataset.theme); } catch (e) {}
+    label();
+  });
+  matchMedia("(prefers-color-scheme: light)").addEventListener("change", function (e) {
+    var saved = null;
+    try { saved = localStorage.getItem("theme"); } catch (err) {}
+    if (saved) return;
+    root.dataset.theme = e.matches ? "light" : "dark";
+    label();
+  });
+  label();
+})();
+
+// Botón para volver arriba: aparece al bajar un rato y su borde marca cuánto se bajó.
 (function () {
   var btn = document.querySelector(".to-top");
   if (!btn) return;
   function toggle() {
+    var max = document.documentElement.scrollHeight - window.innerHeight;
     btn.hidden = window.scrollY < 600;
+    btn.style.setProperty("--progress", max > 0 ? Math.min(window.scrollY / max, 1) : 0);
   }
   window.addEventListener("scroll", toggle, { passive: true });
   btn.addEventListener("click", function () {
